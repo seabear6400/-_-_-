@@ -1,98 +1,85 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import Modal from "../Components/Modal";
-import '../Manager_css/A_MeetingRoomForm.css';
+import "../Manager_css/A_MeetingRoomForm.css"; // 스타일 파일 추가
 
-export default function MeetingRoomForm() {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
-  const [isModalOpen, setModalOpen] = useState(false);
+const A_MeetingRoomForm = ({ reservation, onClose, onSave }) => {
+  const [time, setTime] = useState(reservation.time.replace("시", "")); // "시" 제거 후 초기화
+  const [location, setLocation] = useState(reservation.status); // 장소를 status로 대체
 
-  const onSubmit = (data) => {
-    console.log("예약 정보:", data);
+  const handleTimeChange = (e) => {
+    const value = e.target.value;
+    // 숫자만 입력되도록 유효성 검사 및 21까지만 허용
+    if (/^\d*$/.test(value) && (value === "" || (parseInt(value) >= 0 && parseInt(value) <= 21))) {
+      setTime(value);
+    }
   };
 
-  console.log("isModalOpen 상태:", isModalOpen); // 디버깅용 로그
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value); // 체크박스 선택 값으로 장소 설정
+  };
+
+  const handleSave = () => {
+    // 저장 시 "시"를 붙여서 저장
+    onSave({ time: `${time}시`, status: location });
+  };
 
   return (
-    <div>
-      {/* 체크박스 */}
-      <label>
-        <input
-          type="checkbox"
-          onChange={(e) => setModalOpen(e.target.checked)}
-        />
-        대회의실 예약
-      </label>
-
-      {/* 모달 */}
-      <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
-        <div className="meeting-room-form">
-          <div className="form-container">
-            <div className="form-content">
-              <h2 className="form-title">대회의실 예약</h2>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-group">
-                  <label>사용자 ID</label>
-                  <input
-                    {...register("userId", { required: "사용자 ID를 입력해주세요." })}
-                    placeholder="사용자 ID"
-                    className="input-field"
-                  />
-                  {errors.userId && <p className="error-message">{errors.userId.message}</p>}
-                </div>
-                <div className="form-group">
-                  <label>날짜</label>
-                  <input
-                    type="date"
-                    {...register("date", { required: "날짜를 선택해주세요." })}
-                    className="input-field"
-                  />
-                  {errors.date && <p className="error-message">{errors.date.message}</p>}
-                </div>
-                <div className="form-group">
-                  <label>입실 시간</label>
-                  <input
-                    type="time"
-                    {...register("startTime", { required: "입실 시간을 입력해주세요." })}
-                    className="input-field"
-                  />
-                  {errors.startTime && <p className="error-message">{errors.startTime.message}</p>}
-                </div>
-                <div className="form-group">
-                  <label>퇴실 시간</label>
-                  <input
-                    type="time"
-                    {...register("endTime", { required: "퇴실 시간을 입력해주세요." })}
-                    className="input-field"
-                  />
-                  {errors.endTime && <p className="error-message">{errors.endTime.message}</p>}
-                </div>
-                <div className="form-group">
-                  <label>연락처</label>
-                  <input
-                    {...register("contact", { required: "연락처를 입력해주세요." })}
-                    placeholder="연락처 입력"
-                    className="input-field"
-                  />
-                  {errors.contact && <p className="error-message">{errors.contact.message}</p>}
-                </div>
-                <div className="button-group">
-                  <button type="submit" className="submit-button">
-                    예약 등록
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => reset()}
-                    className="reset-button"
-                  >
-                    취소
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+    <div className="modal">
+      <div className="modal-content">
+        <h2>수정</h2>
+        <div className="form-group">
+          <label htmlFor="time">시간:</label>
+          <input
+            id="time"
+            type="text"
+            value={time}
+            onChange={handleTimeChange}
+            placeholder="0~21 사이 숫자만 입력"
+          />
         </div>
-      </Modal>
+        <div className="form-group">
+          <fieldset>
+            <legend>장소:</legend>
+            <div className="checkbox-group">
+              <label>
+                <input
+                  type="radio"
+                  name="location"
+                  value="대회의실"
+                  checked={location === "대회의실"}
+                  onChange={handleLocationChange}
+                />
+                대회의실
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="location"
+                  value="회의실"
+                  checked={location === "회의실"}
+                  onChange={handleLocationChange}
+                />
+                회의실
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="location"
+                  value="휴게실"
+                  checked={location === "휴게실"}
+                  onChange={handleLocationChange}
+                />
+                휴게실
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <div className="modal-actions">
+          <button className="save-button" onClick={handleSave}>수정</button>
+          <button className="cancel-button" onClick={onClose}>취소</button>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default A_MeetingRoomForm;

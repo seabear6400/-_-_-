@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../Manager_css/A_room status.css";
+import A_MeetingRoomForm from "./A_MeetingRoomForm"; // A_MeetingRoomForm 컴포넌트 import
 
 const AMeetingRoomStatus = () => {
   const [selectedDate, setSelectedDate] = useState("2024-04-07");
@@ -18,19 +19,35 @@ const AMeetingRoomStatus = () => {
     { time: "20시", status: "대회의실 예약" },
     { time: "21시", status: "대회의실 예약" },
   ]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentEditIndex, setCurrentEditIndex] = useState(null);
 
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
   };
 
   const handleEdit = (index) => {
-    alert(`${reservations[index].time} 예약을 수정합니다.`);
+    setCurrentEditIndex(index);
+    setIsModalOpen(true); // 모달 열기
   };
 
   const handleDelete = (index) => {
     const updatedReservations = reservations.filter((_, i) => i !== index);
     setReservations(updatedReservations);
     alert(`${reservations[index].time} 예약이 삭제되었습니다.`);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false); // 모달 닫기
+    setCurrentEditIndex(null);
+  };
+
+  const handleReservationUpdate = (updatedReservation) => {
+    const updatedReservations = reservations.map((reservation, index) =>
+      index === currentEditIndex ? updatedReservation : reservation
+    );
+    setReservations(updatedReservations);
+    handleModalClose();
   };
 
   return (
@@ -72,6 +89,17 @@ const AMeetingRoomStatus = () => {
           </tbody>
         </table>
       </div>
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <A_MeetingRoomForm
+              reservation={reservations[currentEditIndex]}
+              onClose={handleModalClose}
+              onSave={handleReservationUpdate}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

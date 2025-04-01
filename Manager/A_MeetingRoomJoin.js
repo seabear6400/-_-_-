@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Manager_css/A_MeetingRoomJoin.css";
+import Modal from "../Components/Modal"; // Modal 컴포넌트 import
 
-const aRoomRegistration = () => {
+const ARoomRegistration = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
+  const [selectedRoom, setSelectedRoom] = useState(null); // 선택된 회의실 정보
+  const [checkedRoomId, setCheckedRoomId] = useState(null); // 체크된 체크박스 ID 관리
+
   const rooms = [
     {
       id: 1,
@@ -29,6 +34,18 @@ const aRoomRegistration = () => {
     },
   ];
 
+  const openModal = (room) => {
+    setSelectedRoom(room); // 선택된 회의실 정보 저장
+    setIsModalOpen(true); // 모달 열기
+    setCheckedRoomId(room.id); // 체크된 체크박스 ID 저장
+  };
+
+  const closeModal = () => {
+    setSelectedRoom(null); // 선택된 회의실 정보 초기화
+    setIsModalOpen(false); // 모달 닫기
+    setCheckedRoomId(null); // 체크박스 상태 초기화
+  };
+
   return (
     <div className="a_room-registration">
       <header className="a_header">
@@ -51,15 +68,60 @@ const aRoomRegistration = () => {
             </div>
             <div className="a_room-actions">
               <label>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={checkedRoomId === room.id} // 체크 상태 관리
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      openModal(room); // 체크박스가 체크되면 모달 열기
+                    } else {
+                      closeModal(); // 체크박스가 해제되면 모달 닫기
+                    }
+                  }}
+                />
                 체크박스
               </label>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Modal 컴포넌트 */}
+      {isModalOpen && selectedRoom && (
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <h2>{selectedRoom.name}</h2>
+          <form className="room-registration-form">
+            <label>
+              사용자 ID:
+              <input type="text" name="userId" />
+            </label>
+            <label>
+              날짜:
+              <input type="date" name="date" />
+            </label>
+            <label>
+              들어가는 시간:
+              <input type="time" name="startTime" />
+            </label>
+            <label>
+              나오는 시간:
+              <input type="time" name="endTime" />
+            </label>
+            <label>
+              인원 선택:
+              <input type="number" name="participants" />
+            </label>
+            <div className="form-actions">
+              <button type="submit">등록</button>
+              <button type="button" onClick={closeModal}>
+                취소
+              </button>
+            </div>
+          </form>
+        </Modal>
+      )}
     </div>
   );
 };
 
-export default aRoomRegistration;
+export default ARoomRegistration;
