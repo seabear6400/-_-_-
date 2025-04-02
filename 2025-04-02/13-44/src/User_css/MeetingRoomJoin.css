@@ -1,0 +1,155 @@
+.room-registration {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 30px 0;
+  background-color:  #007bff; /* 버튼 뒤 배경에 연한 파란색 추가 */
+  padding: 20px;
+  border-radius: 15px; /* 배경의 모서리를 둥글게 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 배경에 약간의 그림자 추가 */
+}
+
+/* nav 버튼 스타일 */
+.nav-button {
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #5476fb, #2a4eff); /* 예약 버튼과 동일한 파란색 그라데이션 */
+  color: white;
+  border: none;
+  border-radius: 25px; /* 둥근 모서리 */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none; /* 글자 선 제거 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* 텍스트 그림자 */
+}
+
+.nav-button:hover {
+  background: linear-gradient(90deg, #181ff2, #2711ef); /* 예약 버튼과 동일한 더 어두운 파란색 */
+  transform: scale(1.05); /* 크기 확대 효과 */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* hover 상태에서 그림자 강화 */
+}
+
+.nav-button:active {
+  transform: scale(0.95); /* 클릭 시 크기 축소 효과 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 축소 */
+}
+
+button {
+  background: #4caf50; /* 단색으로 변경 */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #45a049; /* 호버 시 단색 유지 */
+}
+
+.room-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.room-card {
+  flex: 1 1 calc(33.333% - 32px); /* 3개씩 배치, 간격 포함 */
+  max-width: calc(33.333% - 32px);
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.room-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .room-card {
+    flex: 1 1 calc(50% - 16px); /* 화면이 작아지면 2개씩 배치 */
+    max-width: calc(50% - 16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .room-card {
+    flex: 1 1 100%; /* 화면이 더 작아지면 1개씩 배치 */
+    max-width: 100%;
+  }
+}
+
+.room-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.room-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.room-info p {
+  margin: 5px 0;
+}
+
+room-actions {
+  margin-top: 10px;
+}
+
+.room-actions label {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* room-actions 버튼 스타일 */
+.room-actions button {
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #5476fb, #2a4eff); /* nav 버튼과 동일한 파란색 그라데이션 */
+  color: white;
+  border: none;
+  border-radius: 25px; /* 둥근 모서리 */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* 텍스트 그림자 */
+}
+
+.room-actions button:hover {
+  background: linear-gradient(90deg, #181ff2, #2711ef); /* hover 시 nav 버튼과 동일한 더 어두운 파란색 */
+  transform: scale(1.05); /* 크기 확대 효과 */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* hover 상태에서 그림자 강화 */
+}
+
+.room-actions button:active {
+  transform: scale(0.95); /* 클릭 시 크기 축소 효과 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 축소 */
+}
