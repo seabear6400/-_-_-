@@ -1,0 +1,308 @@
+.room-registration {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 30px 0;
+  background-color:  #2042ee; /* 버튼 뒤 배경에 연한 파란색 추가 */
+  padding: 20px;
+  border-radius: 15px; /* 배경의 모서리를 둥글게 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 배경에 약간의 그림자 추가 */
+}
+
+/* nav 버튼 스타일 */
+.nav-button {
+  padding: 10px 100px;
+  background: #007bff; /* 예약 버튼과 동일한 파란색 그라데이션 */
+  color: white;
+  border: none;
+  border-radius: 25px; /* 둥근 모서리 */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none; /* 글자 선 제거 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* 텍스트 그림자 */
+}
+
+.nav-button:hover {
+  background: #7195f8; /* 예약 버튼과 동일한 더 어두운 파란색 */
+  transform: scale(1.05); /* 크기 확대 효과 */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* hover 상태에서 그림자 강화 */
+}
+
+.nav-button:active {
+  transform: scale(0.95); /* 클릭 시 크기 축소 효과 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 축소 */
+}
+
+button {
+  background: #4caf50; /* 단색으로 변경 */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #45a049; /* 호버 시 단색 유지 */
+}
+
+.room-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.room-card {
+  flex: 1 1 calc(33.333% - 32px); /* 3개씩 배치, 간격 포함 */
+  max-width: calc(33.333% - 32px);
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.room-card:hover {
+  transform: scale(1.035); /* 클릭 시 크기 축소 효과 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.room-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .room-card {
+    flex: 1 1 calc(50% - 16px); /* 화면이 작아지면 2개씩 배치 */
+    max-width: calc(50% - 16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .room-card {
+    flex: 1 1 100%; /* 화면이 더 작아지면 1개씩 배치 */
+    max-width: 100%;
+  }
+}
+
+.room-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.room-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.room-info p {
+  margin: 5px 0;
+}
+
+room-actions {
+  margin-top: 10px;
+}
+
+.room-actions label {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* room-actions 버튼 스타일 */
+.room-actions button {
+  padding: 10px 50px;
+  background: linear-gradient(90deg, #5476fb, #2a4eff); /* nav 버튼과 동일한 파란색 그라데이션 */
+  color: white;
+  border: none;
+  border-radius: 25px; /* 둥근 모서리 */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* 텍스트 그림자 */
+  
+}
+
+.room-actions button:hover {
+  background: linear-gradient(90deg, #181ff2, #2711ef); /* hover 시 nav 버튼과 동일한 더 어두운 파란색 */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* hover 상태에서 그림자 강화 */
+}
+
+.room-actions button:active {
+  transform: scale(0.95); /* 클릭 시 크기 축소 효과 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 축소 */
+}
+
+/* 모달 배경 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff; /* 배경을 완전 흰색으로 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* 모달 컨테이너 */
+.modal-container {
+  background: #fff; /* 모달 내부 배경을 흰색으로 설정 */
+  border: 1px solid #ffffff; /* 테두리를 흰색으로 설정 */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 90%;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out; /* 모달 등장 애니메이션 */
+  transform: translateY(0); /* 중앙 정렬 유지 */
+}
+
+/* 모달 제목 */
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center; /* 제목을 중앙 정렬 */
+}
+
+/* 모달 내용 */
+.modal-content {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #555;
+  background-color: #f9f9f9;
+}
+
+/* 닫기 버튼 */
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.3s;
+}
+
+.modal-close-button:hover {
+  color: #000;
+}
+
+/* 모달 폼 스타일 */
+.room-registration-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #333;
+  text-align: left;
+}
+
+.room-registration-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.room-registration-form input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* 폼 버튼 스타일 */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.form-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-actions button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.form-actions button[type="button"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+.form-actions button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+/* 모달 등장 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 에러 메시지 스타일 */
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+.company-logo {
+  width: 150px; /* 원하는 크기로 조절 */
+  height: 30px;
+  position: absolute;
+  right: 10px; /* 오른쪽 여백 조정 */
+  bottom: 10px; /* 아래쪽 여백 조정 */
+}

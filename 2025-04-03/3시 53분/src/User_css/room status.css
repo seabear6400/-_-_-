@@ -1,0 +1,131 @@
+.meeting-room-status {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px dashed #007bff;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+}
+
+.calendar-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px;
+}
+
+.styled-select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #3884d5;
+  border-radius: 5px;
+  color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* 마우스를 올려도 스타일이 변하지 않음 */
+.styled-select:hover {
+  background: #60adff;
+  border-color: #3884d5;
+  color: white;
+}
+
+
+
+.reservation-table {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.reservation-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reservation-table th,
+.reservation-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.reservation-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+.styled-date-input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #2689f4;
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: black;
+}
+
+/* 마우스를 올려도 스타일이 변하지 않음 */
+.styled-date-input:hover {
+  background: #60adff;
+  border-color: #2689f4;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 포커스 시 스타일 */
+.styled-date-input:focus {
+  outline: none;
+  border-color: #6fb5ff;
+  box-shadow: 0 2px 6px rgba(0, 86, 179, 0.5);
+}
+.parent-container {
+  position: relative;
+}
+.company-logo {
+  width: 150px; /* 원하는 크기로 조절 */
+  height: auto; /* 비율 유지 */
+  position: absolute;
+  right: 10px;
+  bottom: 10px; /* 조금 띄워서 조정 */
+}
+
+
