@@ -18,7 +18,7 @@
   justify-content: center;
   gap: 10px;
   margin: 30px 0;
-  background-color:  #007bff; /* 버튼 뒤 배경에 연한 파란색 추가 */
+  background-color:  #2042ee; /* 버튼 뒤 배경에 연한 파란색 추가 */
   padding: 20px;
   border-radius: 15px; /* 배경의 모서리를 둥글게 */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 배경에 약간의 그림자 추가 */
@@ -26,8 +26,8 @@
 
 /* nav 버튼 스타일 */
 .nav-button {
-  padding: 10px 20px;
-  background: linear-gradient(90deg, #5476fb, #2a4eff); /* 예약 버튼과 동일한 파란색 그라데이션 */
+  padding: 10px 100px;
+  background: #007bff; /* 예약 버튼과 동일한 파란색 그라데이션 */
   color: white;
   border: none;
   border-radius: 25px; /* 둥근 모서리 */
@@ -41,7 +41,7 @@
 }
 
 .nav-button:hover {
-  background: linear-gradient(90deg, #181ff2, #2711ef); /* 예약 버튼과 동일한 더 어두운 파란색 */
+  background: #7195f8; /* 예약 버튼과 동일한 더 어두운 파란색 */
   transform: scale(1.05); /* 크기 확대 효과 */
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* hover 상태에서 그림자 강화 */
 }
@@ -81,6 +81,11 @@ button:hover {
   padding: 16px;
   text-align: center;
   background-color: #f9f9f9;
+}
+
+.room-card:hover {
+  transform: scale(1.035); /* 클릭 시 크기 축소 효과 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
 }
 
 .room-card img {
@@ -130,7 +135,7 @@ room-actions {
 
 /* room-actions 버튼 스타일 */
 .room-actions button {
-  padding: 10px 20px;
+  padding: 10px 50px;
   background: linear-gradient(90deg, #5476fb, #2a4eff); /* nav 버튼과 동일한 파란색 그라데이션 */
   color: white;
   border: none;
@@ -141,11 +146,11 @@ room-actions {
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* 텍스트 그림자 */
+  
 }
 
 .room-actions button:hover {
   background: linear-gradient(90deg, #181ff2, #2711ef); /* hover 시 nav 버튼과 동일한 더 어두운 파란색 */
-  transform: scale(1.05); /* 크기 확대 효과 */
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* hover 상태에서 그림자 강화 */
 }
 

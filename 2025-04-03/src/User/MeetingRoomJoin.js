@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"; // Link 컴포넌트 import
 import "../User_css/MeetingRoomJoin.css";
 import Modal from "../Components/Modal";
 
+
 const RoomRegistration = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState(null);

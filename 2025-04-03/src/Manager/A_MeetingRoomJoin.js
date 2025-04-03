@@ -10,26 +10,26 @@ const ARoomRegistration = () => {
     {
       id: 1,
       name: "대회의실",
-      image: "https://21gram.blog/wp-content/uploads/2023/10/%EA%B0%95%EC%95%84%EC%A7%80-%EC%9E%85%EB%B2%8C%EB%A6%BC-scaled.jpg",
-      capacity: "수용인원: 20명",
-      info: "회의실 정보: 넓은 공간, 프로젝터 포함",
-      equipment: "비치 장비: TV, 화이트보드",
+      image: "https://imageoptimzer.acon3d.com/?image=https%3A%2F%2Fstorage.acon3d.com%2Fproduct%2Faab7d31c0ba740ba8c1b5156e0a26f1a&width=2600&quality=70&watermark=true", // 대체 이미지 URL
+      capacity: "🏢 대회의실 (20명)",
+      info: "회의실 정보: 🎥 프로젝터 포함",
+      equipment: "비치 장비: 📺 TV, 화이트보드",
     },
     {
       id: 2,
       name: "회의실",
-      image: "https://21gram.blog/wp-content/uploads/2023/10/%EA%B0%95%EC%95%84%EC%A7%80-%EC%9E%85%EB%B2%8C%EB%A6%BC-scaled.jpg",
-      capacity: "수용인원: 10명",
-      info: "회의실 정보: 중간 크기, 화이트보드 포함",
-      equipment: "비치 장비: TV, 화이트보드",
+      image: "https://imageoptimzer.acon3d.com/?image=https%3A%2F%2Fstorage.acon3d.com%2Fproduct%2Faab7d31c0ba740ba8c1b5156e0a26f1a&width=2600&quality=70&watermark=true", // 대체 이미지 URL
+      capacity: "🏢 대회의실 (10명)",
+      info: "회의실 정보: 🎥 프로젝터 포함",
+      equipment: "비치 장비: 📺 TV, 화이트보드",
     },
     {
       id: 3,
       name: "휴게실",
-      image: "https://21gram.blog/wp-content/uploads/2023/10/%EA%B0%95%EC%95%84%EC%A7%80-%EC%9E%85%EB%B2%8C%EB%A6%BC-scaled.jpg",
-      capacity: "수용인원: 5명",
-      info: "회의실 정보: 소규모 공간, 편안한 의자",
-      equipment: "비치 장비: 커피머신, 소파",
+      image: "https://imageoptimzer.acon3d.com/?image=https%3A%2F%2Fstorage.acon3d.com%2Fproduct%2Faab7d31c0ba740ba8c1b5156e0a26f1a&width=2600&quality=70&watermark=true://21gram.blog/wp-content/uploads/2023/10/%EA%B0%95%EC%95%84%EC%A7%80-%EC%9E%85%EB%B2%8C%EB%A6%BC-scaled.jpg", // 대체 이미지 URL
+      capacity: "🏢 대회의실 (5명)",
+      info: "회의실 정보: 🎥 프로젝터 포함",
+      equipment: "비치 장비: 📺 TV,  화이트보드",
     },
   ];
 
