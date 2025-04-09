@@ -1,0 +1,235 @@
+.a_meeting-room-status {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #F2EFE7; /* 바탕화면 흰색 유지 */
+  min-height: 96.8vh;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.a_calendar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  border: 3px dashed #48A6A7;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+}
+.a_calendar-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #48A6A7;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px;
+}
+.a_calendar-container label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+.a_styled-select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #48A6A7;
+  border-radius: 5px;
+  color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* 마우스를 올렸을 때 초록색으로 변경 */
+.a_styled-select:hover {
+  background: #48A6A7; /* 기존 hover 배경 */
+  border-color: #48A6A7;
+  color: white;
+}
+
+/* 클릭 시 스타일 */
+.a_styled-select:focus {
+  outline: none;
+  border-color: #48A6A7;
+  box-shadow: 0 2px 6px rgba(0, 86, 179, 0.5);
+}
+
+/* 마우스가 올라갔을 때 초록색으로 변경 */
+.a_styled-select:hover {
+  background-color: #48A6A7; /* 초록색 배경 */
+  color: white; /* 텍스트 색상 흰색 */
+}
+.a_reservation-table {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.a_styled-date-input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #48A6A7;
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: black;
+}
+
+/* 마우스를 올려도 스타일이 변하지 않음 */
+.a_styled-date-input:hover {
+  background: #48A6A7;
+  border-color: #48A6A7;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 포커스 시 스타일 */
+.a_styled-date-input:focus {
+  outline: none;
+  border-color: #48A6A7;
+  box-shadow: 0 2px 6px rgba(0, 86, 179, 0.5);
+}
+
+.a_reservation-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.a_reservation-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  background-color: #328E6E;
+  color: white; 
+}
+.a_reservation-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+/* 공통 버튼 스타일 */
+.a_reservation-table button {
+  padding: 10px 20px; /* 버튼 크기 */
+  font-size: 1rem; /* 텍스트 크기 */
+  font-weight: 600; /* 텍스트 두께 */
+  border: none;
+  border-radius: 20px; /* 둥근 모서리 */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* 그림자 */
+  text-shadow: none; /* 텍스트 그림자 제거 */
+}
+
+/* 수정 버튼 스타일 */
+.a_reservation-table button.edit {
+  background: linear-gradient(90deg, #007bff, #0056b3); /* 파란색 배경 */
+  color: #ffffff; /* 텍스트 색상: 흰색 */
+}
+
+.a_reservation-table button.edit:hover {
+  background: linear-gradient(90deg, #0056b3, #003f7f); /* hover 효과 */
+  transform: scale(1.05); /* 버튼 크기 확대 효과 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* hover 상태에서 그림자 조정 */
+}
+
+.a_reservation-table button.edit:active {
+  transform: scale(0.95); /* 클릭 시 버튼 크기 축소 효과 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* 클릭 시 그림자 약화 */
+}
+
+/* 삭제 버튼 스타일 */
+.a_reservation-table button.delete {
+  background: linear-gradient(90deg, #dc3545, #a71d2a); /* 빨간색 배경 */
+  color: #ffffff; /* 텍스트 색상: 흰색 */
+}
+
+.a_reservation-table button.delete:hover {
+  background: linear-gradient(90deg, #a71d2a, #7a101e); /* hover 효과 */
+  transform: scale(1.05); /* 버튼 크기 확대 효과 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* hover 상태에서 그림자 조정 */
+}
+
+.a_reservation-table button.delete:active {
+  transform: scale(0.95); /* 클릭 시 버튼 크기 축소 효과 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* 클릭 시 그림자 약화 */
+}
+
+/* 모달 내부 버튼 스타일 */
+.modal-content .form-actions button[type="button"] {
+  background: linear-gradient(90deg, #6c757d, #5a6268); /* 취소 버튼 배경 */
+  color: #ffffff !important; /* 텍스트 색상을 흰색으로 강제 설정 */
+  padding: 10px 25px; /* 버튼 크기 */
+  font-size: 1rem; /* 텍스트 크기 */
+  font-weight: 600; /* 텍스트 두께 */
+  border: none;
+  border-radius: 20px; /* 둥근 모서리 */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* 그림자 */
+  text-shadow: none; /* 텍스트 그림자 제거 */
+}
+
+.modal-content .form-actions button[type="button"]:hover {
+  background: linear-gradient(90deg, #5a6268, #4a4a4a); /* hover 효과 */
+  transform: scale(1.05); /* 버튼 크기 확대 효과 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* hover 상태에서 그림자 조정 */
+}
+
+.modal-content .form-actions button[type="button"]:active {
+  transform: scale(0.95); /* 클릭 시 버튼 크기 축소 효과 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* 클릭 시 그림자 약화 */
+}
+
+.Status_button {
+  padding: 10px 50px;
+  background: linear-gradient(90deg, #9ACBD0, #018891);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Status_button:hover {
+  background: linear-gradient(90deg, #c7caca, #4dc4c4);
+  color: #333333;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.a_modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* 모달이 다른 요소 위에 표시되도록 설정 */
+}
+
+.a_modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  max-width: 90%;
+}
