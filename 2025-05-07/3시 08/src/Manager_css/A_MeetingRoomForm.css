@@ -1,0 +1,283 @@
+Form.css
+
+.meeting-room-form {
+    padding: 20px;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.form-content {
+    padding: 20px;
+}
+
+.form-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-group input[type="date"],
+.form-group input[type="time"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-group input[type="date"]:focus,
+.form-group input[type="time"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.checkbox-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    text-align: center; /* 텍스트를 가운데 정렬 */
+}
+
+.checkbox-group label {
+    display: flex;
+    flex-direction: column; /* 체크박스와 텍스트를 세로로 배치 */
+    align-items: center; /* 텍스트를 체크박스 아래로 중앙 정렬 */
+    font-size: 14px;
+    color: #333;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.submit-button {
+    padding: 12px 20px;
+    background-color:  #1d4ed8;
+    color: white;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.submit-button:hover {
+    background-color:  #1d4ed8;
+}
+
+.reset-button {
+    padding: 12px 20px;
+    background-color: #6C757D;
+    color: white;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.reset-button:hover {
+    background-color: #5a6268;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: #007bff;
+    font-size: 24px;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.F_cancel-button {
+    padding: 10px 20px;
+    background: #6c757d; /* 회색 배경 */
+    color: white;
+    border: none;
+    border-radius: 25px; /* 둥근 모서리 */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+.F_cancel-button:hover {
+    background: #5a6268; /* hover 시 더 어두운 회색 */
+    transform: scale(1.05); /* 버튼 크기 확대 효과 */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* hover 상태에서 그림자 강화 */
+}
+
+.save-button:hover {
+    background-color: #0056b3;
+}
+
+.cancel-button:hover {
+    background-color: #999;
+}
+
+.meeting-room-join-button {
+    background-color: #007bff; /* 파란색 배경 */
+    color: white; /* 흰색 텍스트 */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.meeting-room-join-button:hover {
+    background-color: #0056b3; /* 더 진한 파란색 */
+}
+
+.meeting-room-join-button:active {
+    background-color: #003f7f; /* 클릭 시 더 어두운 파란색 */
+}
+
+.status-options.centered {
+  display: flex;
+  justify-content: center; /* 가운데 정렬 */
+  gap: 40px; /* 옵션 간 간격 */
+  margin-top: 10px;
+}
+
+.status-option {
+  display: flex;
+  flex-direction: row; /* 버튼과 텍스트를 가로로 배치 */
+  align-items: center; /* 버튼과 텍스트를 수직 중앙 정렬 */
+  gap: 8px; /* 버튼과 텍스트 간 간격 */
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.status-option input[type="radio"] {
+  accent-color: #007bff; /* 라디오 버튼 색상 */
+  transform: scale(1.2); /* 크기 확대 */
+}
+
+.status-option:hover {
+  color: #007bff; /* 호버 시 텍스트 색상 변경 */
+}
+
+.F_save-button {
+    padding: 10px 50px;
+    background: linear-gradient(90deg, #9ACBD0, #018891);
+    color: white;
+    border: none;
+    border-radius: 25px; /* 둥근 모서리 */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+  
+.F_save-button:hover {
+    background: linear-gradient(90deg, #c7caca, #4dc4c4);
+    color: #333333;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
