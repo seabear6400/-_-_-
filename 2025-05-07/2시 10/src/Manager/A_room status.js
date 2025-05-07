@@ -1,0 +1,155 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Link 컴포넌트 import
+import "../Manager_css/A_MeetingRoomJoin.css";
+import "../Manager_css/A_room status.css";
+import A_MeetingRoomForm from "./A_MeetingRoomForm"; // A_MeetingRoomForm 컴포넌트 import 추가
+import CustomAlert from "../Components/CustomAlert"; // CustomAlert 컴포넌트 import
+
+const AMeetingRoomStatus = () => {
+  const [selectedDate, setSelectedDate] = useState(
+    new Date().toISOString().split("T")[0] // 현재 날짜를 기본값으로 설정
+  );
+  const [reservations, setReservations] = useState([
+    { user: "김성우 사원", date: "2025-05-07", startTime: "09:00", endTime: "10:00", status: "회의실 예약" },
+    { user: "김성우 사원", date: "2025-05-07", startTime: "10:00", endTime: "11:00", status: "대회의실 예약" },
+    { user: "김성우 사원", date: "2025-05-07", startTime: "11:00", endTime: "12:00", status: "휴개실 예약" },
+    { user: "김성우 사원", date: "2025-05-07", startTime: "12:00", endTime: "13:00", status: "휴개실 예약" },
+    { user: "김성우 사원", date: "2025-05-07", startTime: "13:00", endTime: "14:00", status: "회의실 예약" },
+    { user: "김성우 사원", date: "2025-05-07", startTime: "14:00", endTime: "15:00", status: "대회의실 예약" },
+    { user: "김성우 사원", date: "2025-05-07", startTime: "15:00", endTime: "16:00", status: "대회의실 예약" },
+    { user: "김성우 사원", date: "2025-05-07", startTime: "16:00", endTime: "17:00", status: "휴개실 예약" },
+    { user: "김성우 사원", date: "2025-05-07", startTime: "17:00", endTime: "18:00", status: "회의실 예약" },
+    { user: "김성우 사원", date: "2025-05-07", startTime: "18:00", endTime: "19:00", status: "대회의실 예약" },
+    { user: "김성우 사원", date: "2025-05-07", startTime: "19:00", endTime: "20:00", status: "휴개실 예약" },
+    // 나머지 예약 데이터도 동일하게 수정
+  ]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentEditIndex, setCurrentEditIndex] = useState(null);
+  const [alertMessage, setAlertMessage] = useState(null);
+
+  const handleDateChange = (e) => {
+    setSelectedDate(e.target.value);
+  };
+
+  const handleEdit = (index) => {
+    console.log("Edit button clicked for index:", index); // 디버깅용 로그
+    setCurrentEditIndex(index);
+    setIsModalOpen(true); // 모달 열기
+  };
+
+  const handleDelete = (index) => {
+    const updatedReservations = reservations.filter((_, i) => i !== index);
+    setReservations(updatedReservations);
+    setAlertMessage(`${reservations[index].startTime} 예약이 삭제되었습니다.`); // 커스텀 알림 표시
+
+    // 1.5초 후 알림 닫기
+    setTimeout(() => {
+      setAlertMessage(null);
+    }, 1500);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false); // 모달 닫기
+    setCurrentEditIndex(null);
+  };
+
+  const handleReservationUpdate = (updatedReservation) => {
+    const updatedReservations = reservations.map((reservation, index) =>
+      index === currentEditIndex ? updatedReservation : reservation
+    );
+    setReservations(updatedReservations);
+    setAlertMessage("예약이 성공적으로 수정되었습니다."); // 커스텀 알림 표시
+
+    // 1.5초 후 알림 닫기
+    setTimeout(() => {
+      setAlertMessage(null);
+    }, 1500);
+
+    handleModalClose();
+  };
+
+  return (
+    <div className="a_meeting-room-status">
+      <header className="status_header">
+        <h1>회의실 예약 현황/수정/삭제</h1>
+      </header>
+      <nav className="a_nav">
+        <Link to="/MeetingRoomJoin" className="a_nav-button">사용자 회의실 등록</Link>
+        <Link to="/MeetingRoomStatus" className="a_nav-button">사용자 회의실 현황</Link>
+        <Link to="/A_MeetingRoomJoin" className="a_nav-button">회의실 등록</Link>
+        <Link to="/A_MeetingRoomStatus" className="a_nav-button">회의실 현황/수정/삭제</Link>
+        <Link to="/LoginPage" className="a_nav-button">로그인</Link>
+      </nav>
+      <div className="a_calendar-container">
+        <div className="a_calendar-header">
+          날짜 선택:
+          <input
+            type="date"
+            id="date"
+            className="a_styled-date-input"
+            value={selectedDate}
+            onChange={handleDateChange}
+          />
+        </div>
+        <div className="a_calendar-header">
+          예약현황:
+          <select className="a_styled-select" id="status">
+            <option value="all">전체</option>
+            <option value="reserved">대회의실</option>
+            <option value="available">휴개실</option>  
+            <option value="not-available">회의실</option>
+          </select>
+        </div>
+      </div>
+      <div className="a_reservation-table">
+        <h2>{selectedDate} 예약 현황</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>사용자</th>
+              <th>시간</th>
+              <th>예약 현황</th>
+              <th>수정</th>
+              <th>삭제</th>
+            </tr>
+          </thead>
+          <tbody>
+            {reservations.map((reservation, index) => (
+              <tr key={index}>
+                <td>{reservation.user}</td>
+                <td>{reservation.startTime} - {reservation.endTime}</td>
+                <td>{reservation.status}</td>
+                <td>
+                  <button className="Status_button" onClick={() => handleEdit(index)}>수정</button>
+                </td>
+                <td>
+                  <button className="Status_button" onClick={() => handleDelete(index)}>삭제</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {isModalOpen && (
+        <div className="a_modal-overlay">
+          <div className="a_modal-content">
+            <A_MeetingRoomForm
+              reservation={reservations[currentEditIndex]} // 예약 데이터 전달
+              onClose={handleModalClose}
+              onSave={handleReservationUpdate}
+              buttonLabel="수정" // 버튼 텍스트를 "수정"으로 변경
+            />
+          </div>
+        </div>
+      )}
+      {alertMessage && (
+        <CustomAlert
+          message={alertMessage}
+          onClose={() => setAlertMessage(null)}
+        />
+      )}
+    </div>
+  );
+};
+
+export default AMeetingRoomStatus;
