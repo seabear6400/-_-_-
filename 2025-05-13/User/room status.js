@@ -68,6 +68,7 @@ const MeetingRoomStatus = () => {
         <table>
           <thead>
             <tr>
+              <th>번호</th>
               <th>사용자</th>
               <th>사용시간</th>
               <th>예약 현황</th>
@@ -76,6 +77,7 @@ const MeetingRoomStatus = () => {
           <tbody>
             {reservations.map((reservation, index) => (
               <tr key={index}>
+                <td>{index + 1}</td>
                 <td>{reservation.user}</td>
                 <td>{reservation.time}</td>
                 <td>{reservation.status}</td>
