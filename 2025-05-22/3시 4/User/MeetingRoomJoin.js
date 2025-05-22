@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Link 컴포넌트 import
-import "../Manager_css/A_MeetingRoomJoin.css";
-import "../Manager_css/A_room status.css"; 
-import "../User_css/MeetingRoomJoin.css"; // CSS 파일 import
-import Modal from "../Components/Modal"; // Modal 컴포넌트 import
+import "../User_css/MeetingRoomJoin.css";
+import Modal from "../Components/Modal";
 import CustomAlert from "../Components/CustomAlert"; // CustomAlert 컴포넌트 import
 import logo from "../uplus_ci.png"; // 로고 이미지 불러오기
 
-const ARoomRegistration = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
-  const [selectedRoom, setSelectedRoom] = useState(null); // 선택된 회의실 정보
+const RoomRegistration = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRoom, setSelectedRoom] = useState(null);
   const [formData, setFormData] = useState({
     userId: "",
     date: "",
@@ -37,17 +35,6 @@ const ARoomRegistration = () => {
       }));
     }
   }, [isModalOpen]);
-
-  useEffect(() => {
-    // 페이지가 로드될 때 a_room-card에 show 클래스를 순차적으로 추가
-    const cards = document.querySelectorAll('.a_room-card');
-    cards.forEach((card, idx) => {
-      card.classList.remove('show'); // 새로고침 시 초기화
-      setTimeout(() => {
-        card.classList.add('show');
-      }, 750 * idx); // 0.2초 간격으로 순차 등장
-    });
-  }, []);
 
   const rooms = [
     {
@@ -77,13 +64,13 @@ const ARoomRegistration = () => {
   ];
 
   const openModal = (room) => {
-    setSelectedRoom(room); // 선택된 회의실 정보 저장
-    setIsModalOpen(true); // 모달 열기
+    setSelectedRoom(room);
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    setSelectedRoom(null); // 선택된 회의실 정보 초기화
-    setIsModalOpen(false); // 모달 닫기
+    setSelectedRoom(null);
+    setIsModalOpen(false);
     setFormData({
       userId: "",
       date: "",
@@ -119,53 +106,61 @@ const ARoomRegistration = () => {
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
-      setSuccessMessage("예약이 성공적으로 등록되었습니다!"); // 성공 메시지 설정
-      setTimeout(() => setSuccessMessage(""), 1500); // 1.5초 뒤 메시지 숨기기
+      setSuccessMessage("예약이 완료되었습니다!"); // 성공 메시지 설정
+      console.log("폼 데이터 제출:", formData);
+  
+      // 1.5초 뒤에 메시지 숨기기
+      setTimeout(() => setSuccessMessage(""), 1500);
+  
       closeModal();
     }
   };
 
   return (
-    <div className="a_room-registration">
+    <div className="room-registration">
       <header className="header">
         <img src={logo} alt="U-PLUS SYSTEM 로고" className="logo-img" />
         <div className="header-title-wrapper">
           <h1 className="header-title">회의실 등록</h1>
         </div>
       </header>
-      <nav className="a_nav">
-        <Link to="/MeetingRoomJoin" className="a_nav-button">사용자 회의실 등록</Link>
-        <Link to="/MeetingRoomStatus" className="a_nav-button">사용자 회의실 현황</Link>
-        <Link to="/A_MeetingRoomJoin" className="a_nav-button">회의실 등록</Link>
-        <Link to="/A_MeetingRoomStatus" className="a_nav-button">회의실 현황/수정/삭제</Link>
-        <Link to="/LoginPage" className="a_nav-button">로그인</Link>
+      <nav className="nav">
+        <Link to="/MeetingRoomJoin" className="nav-button">사용자 회의실 등록</Link>
+        <Link to="/MeetingRoomStatus" className="nav-button">사용자 회의실 현황</Link>
+        <Link to="/A_MeetingRoomJoin" className="nav-button">회의실 등록</Link>
+        <Link to="/A_MeetingRoomStatus" className="nav-button">회의실 현황/수정/삭제</Link>
+        <Link to="/LoginPage" className="nav-button">로그인</Link>
       </nav>
-
+      
+      
       {successMessage && (
-        <CustomAlert message={successMessage} />
+        <>
+          <div className="alert-overlay"></div>
+          <CustomAlert message={successMessage} type="success" />
+        </>
       )}
 
       <div className="room-list">
         {rooms.map((room) => (
-          <div key={room.id} className="a_room-card">
+          <div key={room.id} className="room-card">
             <h2>{room.name}</h2>
-            <img src={room.image} alt={room.name} className="a_room-image" />
-            <div className="a_room-info">
+            <img src={room.image} alt={room.name} className="room-image" />
+            <div className="room-info">
               <p>{room.capacity}</p>
               <p>{room.info}</p>
               <p>{room.equipment}</p>
             </div>
-            <div className="a_room-actions">
+            <div className="room-actions">
               <button onClick={() => openModal(room)}>예약</button>
             </div>
           </div>
         ))}
       </div>
-
+      
       {isModalOpen && selectedRoom && (
         <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <h2>{selectedRoom.name}</h2>
-          <form className="a_room-registration-form" onSubmit={handleSubmit}>
+          <h2 className="modal-title">{selectedRoom.name}</h2>
+          <form className="room-registration-form" onSubmit={handleSubmit}>
             <label>
               사용자 ID:
               <input
@@ -174,7 +169,7 @@ const ARoomRegistration = () => {
                 value={formData.userId}
                 onChange={handleInputChange}
               />
-              {errors.userId && <p className="a_error">{errors.userId}</p>}
+              {errors.userId && <p className="error">{errors.userId}</p>}
             </label>
             <label>
               날짜:
@@ -184,7 +179,7 @@ const ARoomRegistration = () => {
                 value={formData.date}
                 onChange={handleInputChange}
               />
-              {errors.date && <p className="a_error">{errors.date}</p>}
+              {errors.date && <p className="error">{errors.date}</p>}
             </label>
             <label>
               들어가는 시간:
@@ -194,7 +189,7 @@ const ARoomRegistration = () => {
                 value={formData.startTime}
                 onChange={handleInputChange}
               />
-              {errors.startTime && <p className="a_error">{errors.startTime}</p>}
+              {errors.startTime && <p className="error">{errors.startTime}</p>}
             </label>
             <label>
               나오는 시간:
@@ -204,10 +199,17 @@ const ARoomRegistration = () => {
                 value={formData.endTime}
                 onChange={handleInputChange}
               />
-              {errors.endTime && <p className="a_error">{errors.endTime}</p>}
+              {errors.endTime && <p className="error">{errors.endTime}</p>}
             </label>
-            {errors.time && <p className="a_error">{errors.time}</p>}
-            <div className="a_form-actions">
+           
+            {errors.time && <p className="error">{errors.time}</p>}
+            {errors.time && (
+              <>
+                <div className="alert-overlay"></div>
+                <CustomAlert message={errors.time} type="error" />
+              </>
+            )}
+            <div className="form-actions">
               <button type="submit"><strong>예약</strong></button>
               <button type="button" onClick={closeModal}>
                 취소
@@ -220,4 +222,4 @@ const ARoomRegistration = () => {
   );
 };
 
-export default ARoomRegistration;
+export default RoomRegistration;

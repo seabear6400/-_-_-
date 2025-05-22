@@ -36,6 +36,17 @@ const RoomRegistration = () => {
     }
   }, [isModalOpen]);
 
+  useEffect(() => {
+    // 페이지가 로드될 때 room-card에 show 클래스를 순차적으로 추가
+    const cards = document.querySelectorAll('.room-card');
+    cards.forEach((card, idx) => {
+      card.classList.remove('show'); // 새로고침 시 초기화
+      setTimeout(() => {
+        card.classList.add('show');
+      }, 750 * idx); // 0.2초 간격으로 순차 등장
+    });
+  }, []);
+
   const rooms = [
     {
       id: 1,
@@ -91,12 +102,19 @@ const RoomRegistration = () => {
     if (!formData.date) newErrors.date = "날짜를 선택하세요.";
     if (!formData.startTime) newErrors.startTime = "들어가는 시간을 입력하세요.";
     if (!formData.endTime) newErrors.endTime = "나오는 시간을 입력하세요.";
-    if (
-      formData.startTime &&
-      formData.endTime &&
-      formData.startTime >= formData.endTime
-    )
-      newErrors.time = "들어가는 시간은 나오는 시간보다 빨라야 합니다.";
+
+    // 시간 비교를 위해 Date 객체로 변환
+    if (formData.startTime && formData.endTime) {
+      const [startHour, startMin] = formData.startTime.split(":").map(Number);
+      const [endHour, endMin] = formData.endTime.split(":").map(Number);
+
+      const start = new Date(0, 0, 0, startHour, startMin);
+      const end = new Date(0, 0, 0, endHour, endMin);
+
+      if (start >= end) {
+        newErrors.time = "들어가는 시간은 나오는 시간보다 빨라야 합니다.";
+      }
+    }
     return newErrors;
   };
 
@@ -203,12 +221,14 @@ const RoomRegistration = () => {
             </label>
            
             {errors.time && <p className="error">{errors.time}</p>}
+            {/*
             {errors.time && (
               <>
                 <div className="alert-overlay"></div>
                 <CustomAlert message={errors.time} type="error" />
               </>
             )}
+            */}
             <div className="form-actions">
               <button type="submit"><strong>예약</strong></button>
               <button type="button" onClick={closeModal}>

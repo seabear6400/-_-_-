@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Link 컴포넌트 import
 import "../User_css/room status.css";
 import "../User_css/MeetingRoomJoin.css";
@@ -21,17 +21,6 @@ const MeetingRoomStatus = () => {
     { user: "김성우 사원", startTime: "18:00", endTime: "19:00", status: "휴개실 예약" },
     { user: "김성우 사원", startTime: "19:00", endTime: "20:00", status: "휴개실 예약" },
   ]);
-
-  useEffect(() => {
-    // 페이지가 로드될 때 reservation-row에 show 클래스를 순차적으로 추가
-    const rows = document.querySelectorAll('.reservation-row');
-    rows.forEach((row, idx) => {
-      row.classList.remove('show'); // 새로고침 시 초기화
-      setTimeout(() => {
-        row.classList.add('show');
-      }, 300 * idx); // 0.3초 간격으로 순차 등장
-    });
-  }, [reservations, selectedDate]);
 
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
@@ -85,7 +74,7 @@ const MeetingRoomStatus = () => {
           </thead>
           <tbody>
             {reservations.map((reservation, index) => (
-              <tr key={index} className="reservation-row">
+              <tr key={index}>
                 <td>{reservation.user}</td>
                 <td>{`${reservation.startTime} - ${reservation.endTime}`}</td> {/* 시간 합쳐서 표시 */}
                 <td>{reservation.status}</td>
@@ -99,4 +88,3 @@ const MeetingRoomStatus = () => {
 };
 
 export default MeetingRoomStatus;
-

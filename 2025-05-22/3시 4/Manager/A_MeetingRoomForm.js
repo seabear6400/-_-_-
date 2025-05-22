@@ -14,7 +14,7 @@ const A_MeetingRoomForm = ({ reservation, onClose, onSave, buttonLabel }) => {
 
   return (
     <div className="modal modal-overlay">
-      <div className="a_modal-content">
+      <div className="modal-contentA">
         <h2 className="modal-title">예약 수정</h2>
         <div className="form-group">
           <label htmlFor="user">사용자</label>

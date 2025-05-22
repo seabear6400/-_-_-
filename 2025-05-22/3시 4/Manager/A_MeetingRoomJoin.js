@@ -38,17 +38,6 @@ const ARoomRegistration = () => {
     }
   }, [isModalOpen]);
 
-  useEffect(() => {
-    // 페이지가 로드될 때 a_room-card에 show 클래스를 순차적으로 추가
-    const cards = document.querySelectorAll('.a_room-card');
-    cards.forEach((card, idx) => {
-      card.classList.remove('show'); // 새로고침 시 초기화
-      setTimeout(() => {
-        card.classList.add('show');
-      }, 750 * idx); // 0.2초 간격으로 순차 등장
-    });
-  }, []);
-
   const rooms = [
     {
       id: 1,

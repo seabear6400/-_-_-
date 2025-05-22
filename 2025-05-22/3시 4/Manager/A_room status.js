@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Link 컴포넌트 import
 import "../Manager_css/A_MeetingRoomJoin.css";
 import "../Manager_css/A_room status.css";
@@ -30,11 +30,6 @@ const AMeetingRoomStatus = () => {
   const [alertMessage, setAlertMessage] = useState(null);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false); // 삭제 확인 모달 상태
   const [deleteIndex, setDeleteIndex] = useState(null); // 삭제할 예약의 인덱스
-  const [fade, setFade] = useState(false);
-
-  useEffect(() => {
-    setFade(true);
-  }, []);
 
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
@@ -126,8 +121,7 @@ const AMeetingRoomStatus = () => {
           </select>
         </div>
       </div>
-      {/* 여기서부터 fade-in */}
-      <div className={`a_reservation-table${fade ? " fade-in" : ""}`}>
+      <div className="a_reservation-table">
         <h2>{selectedDate} 예약 현황</h2>
         <table>
           <thead>
@@ -156,14 +150,15 @@ const AMeetingRoomStatus = () => {
           </tbody>
         </table>
       </div>
-      {/* 이하 모달 등은 그대로 */}
       {isModalOpen && (
-        <A_MeetingRoomForm
-          reservation={reservations[currentEditIndex]} // 예약 데이터 전달
-          onClose={handleModalClose}
-          onSave={handleReservationUpdate}
-          buttonLabel="수정" // 버튼 텍스트를 "수정"으로 변경
-        />
+        <div className="a_modal-overlay">
+            <A_MeetingRoomForm
+              reservation={reservations[currentEditIndex]} // 예약 데이터 전달
+              onClose={handleModalClose}
+              onSave={handleReservationUpdate}
+              buttonLabel="수정" // 버튼 텍스트를 "수정"으로 변경
+            />
+        </div>
       )}
       {isConfirmModalOpen && (
         <Modal isOpen={isConfirmModalOpen} onClose={cancelDelete}>
