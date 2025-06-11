@@ -1,0 +1,170 @@
+.meeting-room-status {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  position: relative; /* 로고 위치 기준 */
+}
+.s_header {
+  text-align: center;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  min-height: 60px;
+  position: relative;
+  padding-left: 20px; /* 왼쪽에 여백 추가 */
+}
+
+.s_header h1 {
+  font-size: 2rem;
+}
+
+.logo-img {
+  height: 48px;
+  margin-right: 40px;
+}
+
+.s_header-title-wrapper {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* 버튼 등 클릭 방해 방지 */
+}
+
+.U_calendar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px dashed #007bff;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+}
+
+.U_calendar-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px;
+}
+
+.U_styled-select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #2689f4; /* 날짜 선택과 동일한 색상 */
+  border-radius: 5px;
+  color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.U_styled-select:hover {
+  background: #60adff; /* 날짜 선택과 동일한 hover 색상 */
+  border-color: #2689f4;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.U_styled-select:focus {
+  outline: none;
+  border-color: #6fb5ff; /* 날짜 선택과 동일한 focus 색상 */
+  box-shadow: 0 2px 6px rgba(0, 86, 179, 0.5);
+}
+
+.reservation-table {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.reservation-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reservation-table th,
+.reservation-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.reservation-table th {
+  background-color: #5476fb;
+  font-weight: bold;
+  color: white;
+}
+
+.reservation-row {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.reservation-row.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.styled-date-input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #2689f4;
+  border-radius: 5px;
+  color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* 마우스를 올려도 스타일이 변하지 않음 */
+.styled-date-input:hover {
+  background: #60adff;
+  border-color: #2689f4;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 포커스 시 스타일 */
+.styled-date-input:focus {
+  outline: none;
+  border-color: #6fb5ff;
+  box-shadow: 0 2px 6px rgba(0, 86, 179, 0.5);
+}
+
+.parent-container {
+  position: relative;
+}
+
+.company-logo {
+  width: 150px;
+  height: auto;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+
+
